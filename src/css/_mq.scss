@@ -1,0 +1,14 @@
+//ブレークポイント
+$layout-width-sp: 560px;
+$layout-width-tab: 960px;
+$breakpoints: (
+  "sp": "screen and (max-width: #{$layout-width-sp})",
+  "tab": "screen and (max-width: #{$layout-width-tab - 1px})",
+  "pc": "screen and (min-width: #{$layout-width-tab})"
+);
+//メディアクエリー
+@mixin mq($breakpoint: sp) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}

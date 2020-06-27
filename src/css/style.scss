@@ -1,0 +1,1849 @@
+@import "_define";
+@import "_reset";
+@import "_mq";
+@import "_animate";
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+*,
+*::before,
+*::after {
+  // color: $keyBlack;
+  // text-decoration: none;
+}
+* {
+  color: $keyBlack;
+  text-decoration: none;
+}
+body {
+  background-color: #f3f3f3;
+}
+body,
+textarea {
+  font-family: $fontFamily;
+}
+/* IE表示用のCSS　*/
+// @media all and (-ms-high-contrast: none) {
+//   body {
+//     font-family: "メイリオ", Meiryo, "游ゴシック", YuGothic,
+//       "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "ＭＳ Ｐゴシック",
+//       "MS PGothic", sans-serif;
+//   }
+// }
+
+// モーダル固定用
+body.fixed {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+@include mq("tab") {
+    float: left;
+  }
+}
+// -------------------------
+// 見出しサイズ
+// -------------------------
+h1 {
+  font-size: 30rem;
+  &.en {
+    font-size: 38rem;
+  }
+}
+h2 {
+  font-size: 28rem;
+  &.en {
+    font-size: 36rem;
+  }
+}
+h3 {
+  font-size: 20rem;
+  &.en {
+    font-size: 20rem;
+  }
+}
+p,
+tr,
+th,
+td {
+  &.small {
+    font-size: 12rem;
+  }
+  &.en {
+    font-size: 18rem;
+  }
+  &.enSmall {
+    font-size: 14rem;
+  }
+}
+
+// -------------------------
+// ボタン
+// -------------------------
+// コンバージョンボタン
+.conversionBtn {
+  display: block;
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+  background-color: $keyYellow;
+  color: $keyWhite;
+  font-size: 18rem;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  // padding: 0 50px;
+  &:hover {
+    background-color: #f18900;
+  }
+  &.btnContact {
+    max-width: 280px;
+
+@include mq("tab") {
+      max-width: 232px;
+    }
+
+@include mq("sp") {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+  &.btnSend {
+    max-width: 174px;
+    margin-top: 30px;
+
+@include mq("tab") {
+      max-width: 121px;
+
+// text-align: center;
+      margin: 20px auto 0 auto;
+      margin-top: 20px;
+    }
+  }
+}
+// 汎用（白）ボタン
+.whiteBtn {
+  width: 100%;
+  max-width: 248px;
+  height: 64px;
+  border: 1px solid #707070;
+  background-color: $keyWhite;
+  font-size: 20rem;
+  line-height: 64px;
+  cursor: pointer;
+
+@include mq("sp") {
+    width: calc(100% - 32px);
+
+// max-width: calc(100% - 32px);
+    max-width: 311px;
+    height: 54px;
+    line-height: 54px;
+  }
+
+  &:hover {
+    background-color: $keyBlack;
+    color: $keyWhite;
+  }
+}
+// 汎用（黒）ボタン
+.blackBtn {
+  width: 100%;
+  max-width: 248px;
+  height: 64px;
+  border: 1px solid $keyWhite;
+  background-color: $keyBlack;
+  color: $keyWhite;
+  font-size: 20rem;
+  line-height: 64px;
+  cursor: pointer;
+
+@include mq("sp") {
+    max-width: 343px;
+    height: 54px;
+    line-height: 54px;
+  }
+
+  &:hover {
+    border: 1px solid $keyBlack;
+    background-color: $keyWhite;
+    color: $keyBlack;
+  }
+}
+// -------------------------
+// ヘッダー
+// -------------------------
+.header {
+  position: fixed;
+  z-index: 500;
+  width: 100%;
+  height: 80px;
+  box-shadow: 0 2px 3px 0 $keyBlack;
+  background-color: #fff;
+  &__inner {
+    // width: 100%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 627px;
+    height: 100%;
+    margin: 0 auto;
+  }
+  &__logo {
+    display: none;
+    // @include mq("tab") {
+    //   display: block;
+    // }
+  }
+  &__nav {
+    width: 100%;
+  }
+  &__globalNav__lists {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__globalNav__item {
+    position: relative;
+    &:hover {
+      // text-decoration: underline;
+    }
+    &:hover::after {
+      display: block;
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 130%;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $keyBlack;
+      content: "";
+    }
+  }
+  .navCurrent {
+    a::after {
+      display: block;
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 130%;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $keyBlack;
+      content: "";
+    }
+  }
+}
+
+@include mq("tab") {
+  .header {
+    height: 68px;
+    background-color: #fff;
+    transition: all .6s;
+    &__inner {
+      // max-width: calc(100% - 20px);
+      max-width: 100%;
+    }
+    &__logo {
+      display: block;
+      width: 200px;
+      margin-left: 16px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  // コピー（要改造）
+  // サイドバー
+  .header__nav {
+    display: block;
+    position: fixed;
+
+// right: 0px;
+    top: 0;
+    right: -320px; /* これで隠れる */
+
+// transition: all 0.6s;
+    z-index: 200;
+    width: 300px; /* スマホに収まるくらい */
+    height: 100vh;
+    overflow-y: auto; /* メニューが多くなったらスクロールできるように */
+
+// padding-top: 40px;
+    background-color: #fff;
+  }
+  .header__globalNav__lists {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li {
+      padding: 10px 0;
+      font-weight: bold;
+    }
+  }
+  .header__globalNav__item {
+    padding: 0 14px;
+    text-align: left;
+  }
+  .header__globalNav__item a {
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    color: #111;
+    text-decoration: none;
+  }
+  .header__globalNav__item:hover {
+    // background-color: #eee;
+  }
+  // ハンバーガーアイコン
+  .hamburger {
+    display: block;
+    position: fixed;
+    top: 13px;
+
+// visibility: hidden;
+    right: 13px;
+    z-index: 300;
+    width: 40px; /* クリックしやすいようにちゃんと幅を指定する */
+    height: 40px; /* クリックしやすいようにちゃんと高さを指定する */
+    cursor: pointer;
+
+@include mq("sp") {
+      // top: 8px;
+    }
+  }
+  .hamburger__line {
+    position: absolute;
+    left: 7px;
+    width: 26px;
+    height: 4px;
+    border-radius: 2px;
+    background-color: $keyBlack;
+    transition: all .6s;
+  }
+  .hamburger__line--1 {
+    top: 12px;
+  }
+  .hamburger__line--2 {
+    top: 20px;
+  }
+  .hamburger__line--3 {
+    top: 28px;
+  }
+  .black-bg {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+
+// transition: all 0.6s;
+    cursor: pointer;
+  }
+  /* 表示された時用のCSS */
+  // サイドバー（表示されたとき用）
+  .nav-open .header__nav {
+    display: flex;
+    align-items: center;
+    right: 0;
+    text-align: center;
+    transition: all .6s;
+  }
+  // 背景（表示されたとき用）
+  .nav-open .black-bg {
+    visibility: visible;
+    opacity: .8;
+    transition: all .6s;
+  }
+  // ハンバーガー（表示されたとき用）
+  .nav-open .hamburger {
+    // right: 313px;
+    transform: translateX(-300px);
+    transition: all .6s;
+  }
+  .nav-open .hamburger__line {
+    background-color: $keyWhite;
+  }
+  .nav-open .hamburger__line--1 {
+    top: 20px;
+    transform: rotate(45deg);
+  }
+  .nav-open .hamburger__line--2 {
+    left: 50%;
+    width: 0;
+  }
+  .nav-open .hamburger__line--3 {
+    top: 20px;
+    transform: rotate(-45deg);
+  }
+}
+
+// -------------------------
+// ファーストビュー
+// -------------------------
+.firstView {
+  width: 100%;
+  height: 648px;
+  margin-bottom: 110px;
+  background-image: url(../img/mv@2x.png);
+  background-position: 23% center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+@include mq("tab") {
+    height: 667px;
+    margin-bottom: 60px;
+  }
+  &__inner {
+    position: relative;
+    width: calc(100% - 32px);
+    max-width: 1148px;
+
+// width: 100%;
+    margin: 0 auto;
+
+@include mq("tab") {
+    }
+  }
+  &__text {
+    position: absolute;
+    top: 200px;
+    right: 0;
+
+    p {
+      width: 100%;
+      max-width: 524px;
+      margin-top: 40px;
+      font-size: 18rem;
+    }
+    button {
+      margin-top: 40px;
+    }
+  }
+  &__img {
+    width: 100%;
+    height: 648px;
+    vertical-align: bottom;
+
+@include mq("tab") {
+      height: 667px;
+    }  object-fit: cover;
+  }
+}
+// -------------------------
+// ニュース
+// -------------------------
+.news {
+  padding: 20px 0 130px 0;
+
+@include mq("tab") {
+    padding: 0 0 60px 0;
+  }
+
+  &__inner {
+    position: relative;
+    width: calc(100% - 32px);
+    max-width: 1180px;
+    margin: 0 auto;
+    box-shadow: 0 5px 12px rgba(61, 61, 61, .2);
+    background-color: $keyWhite;
+    text-align: center;
+
+// @include mq("tab") {
+    //   max-width: calc(100% - 32px);
+    // }
+
+    @include mq("sp") {
+      margin-top: -100px;
+    }
+  }
+  &__innerBox {
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 60px 0 40px;
+
+@include mq("sp") {
+      padding: 40px 0;
+    }
+  }
+  &__contents {
+    margin-top: 60px;
+
+@include mq("sp") {
+      margin-top: 40px;
+    }
+
+    a {
+      display: block;
+      border-top: 1px solid #cecdcd;
+      &:last-of-type {
+        border-bottom: 1px solid #cecdcd;
+      }
+    }
+    a:hover {
+      opacity: .8;
+      background-color: #e8eafd;
+      text-decoration: none;
+    }
+  }
+  &__items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+    padding: 40px 0;
+
+@include mq("tab") {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 16px;
+    }
+
+    &::after {
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      font-family: "Font Awesome 5 Pro";
+      font-size: 35rem;
+      font-weight: bold;
+      content: "\f105";
+    }
+  }
+  &__dateLabel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 283px;
+
+@include mq("tab") {
+      justify-content: flex-start;
+    }
+  }
+  &__date {
+    width: 100%;
+    max-width: 98px;
+  }
+  &__label {
+    width: 100%;
+    max-width: 125px;
+    margin-left: 60px;
+    border: 1px solid $keyBlue;
+    border-radius: 14px;
+    background-color: $keyWhite;
+    line-height: 28px;
+
+@include mq("tab") {
+      margin-left: 20px;
+    }
+
+    @media screen and (-ms-high-contrast: active),
+    screen and (-ms-high-contrast: none) {
+      padding-top: 5px;
+    }
+    // @include mq("sp") {
+    //   margin-left: 20px;
+    // }
+  }
+  &__text {
+    width: 100%;
+    max-width: 737px;
+    margin-left: 60px;
+    padding-right: 60px;
+    text-align: left;
+
+@include mq("tab") {
+      max-width: none;
+      margin-top: 10px;
+      margin-left: auto;
+      padding-right: 40px;
+    }
+  }
+  &__btnPosition {
+    margin-top: 40px;
+  }
+}
+// -------------------------
+// サービス
+// -------------------------
+.service {
+  position: relative;
+  padding-top: 80px;
+
+@include mq("tab") {
+    padding-top: 60px;
+  }
+
+@include mq("sp") {
+    padding-top: 40px;
+  }
+
+@include mq("sp") {
+    &__item + .service__item {
+      margin-top: 65px;
+    }
+  }
+
+  &::before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 400px;
+    background-color: $keyBlack;
+    content: "";
+  }
+  &__inner {
+    width: calc(100% - 32px);
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  h2 {
+    color: $keyWhite;
+  }
+  &__innerBox {
+    margin-top: 80px;
+    box-shadow: 0 5px 12px rgba(62, 62, 62, .2);
+    background-color: $keyWhite;
+
+@include mq("tab") {
+      margin-top: 60px;
+    }
+
+@include mq("sp") {
+      margin-top: 40px;
+    }
+  }
+  &__innerBoxInner {
+    width: calc(100% - 32px);
+    max-width: 864px;
+    margin: 0 auto;
+    padding-top: 54px;
+    padding-bottom: 56px;
+
+@include mq("tab") {
+      padding-top: 40px;
+    }
+  }
+  &__items {
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+
+@include mq("sp") {
+      flex-direction: column;
+
+// justify-content: center;
+      align-items: center;
+    }
+  }
+  &__item {
+    max-width: 231px;
+
+@include mq("tab") {
+      width: 30%;
+    }
+
+@include mq("sp") {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
+  &__img {
+    height: 44px;
+  }
+  &__h3 {
+    margin-top: 20px;
+    line-height: 28px;
+  }
+  &__text {
+    margin-top: 15px;
+    font-size: 14rem;
+    line-height: 24px;
+    text-align: left;
+  }
+}
+// -------------------------
+// リザルト
+// -------------------------
+.result {
+  position: relative;
+  margin-top: 130px;
+
+// background-color: $keyBlack;
+  padding: 80px 0;
+
+@include mq("tab") {
+    margin-top: 105px;
+    padding: 60px 0;
+  }
+
+@include mq("sp") {
+    margin-top: 60px;
+    padding: 40px 0;
+  }
+
+  &::before {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -10;
+    width: 93.19180087847731%;
+    height: 794px;
+    background-color: $keyBlack;
+    content: "";
+
+@include mq("tab") {
+      width: 100%;
+      height: 670px;
+    }
+
+@include mq("sp") {
+      height: 546px;
+    }
+  }
+  &__inner {
+    width: calc(100% - 16px);
+    max-width: 85.13909224011713%;
+
+// margin: 0 auto;
+    margin-left: auto;
+
+@include mq("tab") {
+      max-width: 100%;
+    }
+  }
+  h2 {
+    color: $keyWhite;
+  }
+  &__swiperContainer {
+    // overflow: visible !important;
+    padding-bottom: 58px !important;
+  }
+  &__sliders {
+    margin-top: 80px;
+
+@include mq("tab") {
+      margin-top: 60px;
+    }
+
+@include mq("sp") {
+      margin-top: 40px;
+    }
+  }
+  &__slider {
+    width: 422px !important;
+    margin-right: 40px;
+    background-color: $keyWhite;
+
+@include mq("tab") {
+      width: 349px !important;
+      margin-right: 36px;
+    }
+
+@include mq("sp") {
+      width: 276px !important;
+      margin-right: 24px;
+    }
+  }
+  &__sliderImg {
+    width: 422px;
+
+@include mq("tab") {
+      width: 349px;
+    }
+
+@include mq("sp") {
+      width: 276px;
+    }
+  }
+  &__sliderInfo {
+    padding: 20px;
+
+@include mq("tab") {
+      padding: 16px;
+    }
+
+@include mq("sp") {
+      padding: 12px;
+    }
+  }
+  &__sliderH3 {
+    @include mq("tab") {
+      font-size: 17.5rem;
+    }
+
+@include mq("sp") {
+      font-size: 15rem;
+    }
+  }
+  &__sliderText {
+    margin-top: 20px;
+
+@include mq("tab") {
+      margin-top: 16px;
+      font-size: 14rem;
+    }
+
+@include mq("sp") {
+      margin-top: 12px;
+      font-size: 12rem;
+    }
+  }
+  &__pagination {
+    bottom: 8px !important;
+    left: 5px !important;
+    text-align: left !important;
+
+@include mq("tab") {
+      left: 0 !important;
+      text-align: center !important;
+    }
+  }
+  // パターン1（box-shadow）
+  // .swiper-pagination-bullet {
+  //   opacity: 1;
+  //   background-color: $keyWhite;
+  //   height: 20px;
+  //   width: 20px;
+  //   margin-right: 20px !important;
+  //   border: 1px solid $keyBlack;
+  //   box-shadow: 0 0 0 4px $keyBlack inset;
+  //   // box-shadow: 0 0 0 1px $keyBlack;
+  // }
+  // .swiper-pagination-bullet-active {
+  //   border: 1px solid $keyWhite !important;
+  //   // box-shadow: 0 0 0 3px $keyBlack inset;
+  // }
+
+  // パターン2（疑似要素）
+  .swiper-pagination-bullet {
+    opacity: 1;
+    width: 12px;
+    height: 12px;
+    border: none;
+    background-color: $keyWhite;
+  }
+  .swiper-pagination-bullet + .swiper-pagination-bullet {
+    margin-left: 20px !important;
+  }
+  .swiper-pagination-bullet-active {
+    position: relative;
+    &::after {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      width: 20px;
+      height: 20px;
+      border: 1px solid $keyWhite !important;
+      border-radius: 50%;
+      content: "";
+    }
+  }
+
+  &__btn {
+    margin-top: 48px;
+
+@include mq("tab") {
+      display: block;
+      margin-top: 44px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+@include mq("sp") {
+      max-width: calc(100% - 16px);
+      margin-top: 40px;
+
+// margin-left: auto;
+      margin-left: 0;
+      // margin-right: auto;
+    }
+  }
+}
+// -------------------------
+// プライス
+// -------------------------
+.price {
+  padding-top: 80px;
+
+@include mq("tab") {
+    padding-top: 60px;
+  }
+
+@include mq("sp") {
+    padding-top: 40px;
+  }
+
+  &__inner {
+    width: calc(100% - 32px);
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  &__table {
+    width: 100%;
+    max-width: 960px;
+    margin-top: 80px;
+
+@include mq("tab") {
+      margin-top: 60px;
+    }
+
+@include mq("sp") {
+      margin-top: 40px;
+    }
+
+    tr {
+      height: 60px;
+      font-weight: bold;
+      line-height: 60px;
+    }
+    th,
+    td {
+      padding: 0 20px;
+      border: 1px solid #707070;
+    }
+    th {
+      background-color: $keyBlack;
+      color: $keyWhite;
+      // max-width: 290px;
+      // min-width: 100px;
+    }
+    td {
+      background-color: $keyWhite;
+      text-align: left;
+    }
+  }
+  p {
+    margin-top: 24px;
+    text-align: left;
+
+@include mq("tab") {
+      margin-top: 19px;
+    }
+
+@include mq("sp") {
+      margin-top: 14px;
+    }
+  }
+}
+// -------------------------
+// コメント
+// -------------------------
+.comments {
+  position: relative;
+  margin-top: 131px;
+
+@include mq("tab") {
+    margin-top: 100px;
+  }
+
+@include mq("sp") {
+    margin-top: 40px;
+  }
+  &::before {
+    display: block;
+    position: absolute;
+    top: 150px;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    max-width: 980px;
+    height: 596px;
+    background-color: $keyBlack;
+    content: "";
+
+@include mq("tab") {
+      // top: 105px;
+    }
+
+@include mq("sp") {
+      top: 60px;
+    }
+  }
+  &__inner {
+    position: relative;
+    width: calc(100% - 32px);
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  &__box {
+    max-width: 644px;
+    padding-top: 80px;
+    padding-bottom: 120px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .161);
+    background-color: $keyWhite;
+
+// margin-top: -70px;
+
+    @include mq("tab") {
+      max-width: none;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+  &__boxInner {
+    max-width: 564px + 40px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+@include mq("tab") {
+      max-width: none;
+    }
+  }
+  &__commentBox {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+
+@include mq("tab") {
+      margin-top: 30px;
+    }
+  }
+  &__commentImg {
+    width: 100px;
+    margin-right: 24px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &__commentText {
+    width: 100%;
+    max-width: 414px;
+
+@include mq("tab") {
+      max-width: none;
+    }
+  }
+  &__img {
+    position: absolute;
+    top: 126px;
+    left: 644px;
+    z-index: -1;
+    max-width: 537px;
+    img {
+      width: 100%;
+      height: auto;
+
+@include mq("tab") {
+        display: none;
+      }
+    }
+  }
+}
+
+// -------------------------
+// Q＆A
+// -------------------------
+.qa {
+  margin-top: 131px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-image: url(../img/sunyu-kim-1053375-unsplash@2x.png);
+  background-size: cover;
+
+// width: ;
+
+  @include mq("tab") {
+    margin-top: 95px;
+    padding-top: 60px;
+  }
+
+@include mq("sp") {
+    margin-top: 60px;
+    padding-top: 40px;
+  }
+
+  &__inner {
+    width: calc(100% - 32px);
+
+// margin-top: 80px;
+    // position: relative;
+    // max-width: 1148px;
+    max-width: 1147px;
+
+// width: 100%;
+    margin: 0 auto;
+  }
+  h2 {
+    text-align: center;
+  }
+  &__boxes {
+    // max-width: 616px + 32px;
+    max-width: 616px;
+
+// width: calc(100% - 32px);
+    margin-top: 80px;
+    margin-left: auto;
+
+@include mq("tab") {
+      margin-top: 60px;
+    }
+
+@include mq("sp") {
+      margin-top: 40px;
+    }
+  }
+  &__box {
+    // padding-bottom: 18px;
+    margin-top: 40px;
+    padding: 18px;
+    border-radius: 7px;
+    background-color: $keyWhite;
+
+@include mq("tab") {
+      margin-top: 35px;
+    }
+
+@include mq("sp") {
+      margin-top: 30px;
+    }
+
+    &:hover {
+      // background-color: #e8eafd;
+    }
+  }
+  &__answer {
+    margin-top: 20px;
+
+// margin: 0 18px 18px 18px;
+    padding: 18px 14px;
+    border-radius: 7px;
+    background-color: rgba(59, 105, 255, .2);
+  }
+  &__question {
+    cursor: pointer;
+    // padding: 18px;
+    &:hover {
+      opacity: .9;
+      border-radius: 7px;
+      background-color: #e8eafd;
+    }
+  }
+  &__questionText {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    // padding-left: 13px;
+    &::before {
+      display: block;
+
+// top: 50%;
+      left: 0;
+      width: 26px;
+      height: 26px;
+      margin-right: 13px;
+      border-radius: 50%;
+      background-color: $keyBlue;
+      color: $keyWhite;
+      line-height: 26px;
+      text-align: center;
+      content: "Q";
+      // transform: translate3d(-50%, -50%, 0);
+    }
+    &::after {
+      // font-weight: bold;
+      margin-left: auto;
+      color: $keyBlue;
+      font-family: "Font Awesome 5 Pro";
+      content: "\f067";
+    }
+    .on &::after {
+      content: "\f068";
+    }
+  }
+}
+// -------------------------
+// アクセス
+// -------------------------
+.access {
+  position: relative;
+  margin-top: 130px;
+  padding-bottom: 384px;
+
+@include mq("tab") {
+    margin-top: 40px;
+    padding-bottom: 40px;
+  }
+
+@include mq("sp") {
+    // margin-top: 40px;
+  }
+
+  &::before {
+    display: block;
+    position: absolute;
+    top: -130px;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    max-width: 980px;
+    height: 560px;
+    background-color: $keyBlack;
+    content: "";
+
+@include mq("tab") {
+      height: 1000px;
+    }
+  }
+
+  &__inner {
+    position: relative;
+    width: calc(100% - 32px);
+    max-width: 1182px;
+    margin: 0 auto;
+  }
+  h2 {
+    color: $keyWhite;
+  }
+  &__info {
+    margin-top: 40px;
+    color: $keyWhite;
+  }
+  &__googleMap {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+// width: 95%;
+    // margin: 0 auto;
+    width: 68%;
+    max-width: 720px;
+
+// max-height: 515px;
+    /* 左右に余白が必要なら値を変更してもOK */
+    height: 0;
+    padding-bottom: 515px;
+
+/* padding-topでもOK */
+    overflow: hidden;
+
+@include mq("tab") {
+      width: 100%;
+      max-width: none;
+      padding-bottom: 400px;
+    }
+
+@include mq("sp") {
+      padding-bottom: 70.26239067055394%;
+    }
+
+@include mq("tab") {
+      position: relative;
+      margin-top: 19px;
+    }
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+
+/* 必要であれば!importantを付けてください */
+      height: 100%;
+
+      /* 必要であれば!importantを付けてください */
+    }
+  }
+
+  &__btn {
+    margin-top: 40px;
+    font-size: 20rem;
+
+@include mq("tab") {
+      display: block;
+      width: 100%;
+      margin: 40px auto 0 auto;
+      font-size: 18rem;
+    }
+  }
+}
+// -------------------------
+// コンタクト
+// -------------------------
+.contact {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background: url(../img/alex-blajan-159378-unsplash@2x.png);
+  background-size: cover;
+
+@include mq("tab") {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+@include mq("sp") {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  // z-index: -1;
+  &__box {
+    width: calc(100% - 32px);
+    max-width: 960px;
+
+// height: 200px;
+    margin: 0 auto;
+    border-radius: 12px;
+
+// padding: 80px 0;
+    background-color: $keyWhite;
+  }
+  &__boxHead {
+    border-radius: 12px 12px 0 0;
+    background: url(../img/contact1@2x.png);
+    background-position: center center;
+    background-size: cover;
+    h2,
+    p {
+      color: $keyWhite;
+    }
+  }
+  &__boxHeadInner {
+    width: calc(100% - 32px);
+    margin: 0 auto;
+    padding: 32px 0 36px;
+    text-align: center;
+    p {
+      margin-top: 12px;
+
+@include mq("sp") {
+        text-align: left;
+      }
+    }
+  }
+  &__boxForm {
+    padding: 60px 16px;
+
+@include mq("tab") {
+      padding: 40px 16px;
+    }
+  }
+  &__boxFormInner {
+    width: calc(100% - 32px);
+    max-width: 780px;
+    margin: 0 auto;
+    dt {
+      font-size: 22rem;
+
+@include mq("sp") {
+        font-size: 16rem;
+      }
+    }
+  }
+  &__formPosition {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+
+@include mq("sp") {
+      flex-direction: column;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+    dt {
+      // max-width: 180px;
+      width: 220px;
+      // margin-right: 20px;
+    }
+    dd {
+      width: 65%;
+      max-width: 505px;
+
+@include mq("sp") {
+        width: 100%;
+        max-width: none;
+        margin-top: 10px;
+      }
+      input {
+        height: 24px;
+        padding: 0 10px;
+      }
+    }
+  }
+  &__formContent {
+    dd {
+      // max-width: 505px;
+      // width: 100%;
+    }
+    input {
+      opacity: .5;
+      width: 100%;
+      border: none;
+      line-height: 24px;
+      &:focus,
+      &:hover {
+        // opacity: 1;
+        // pointer-events: none;
+      }
+    }
+  }
+  &__underline {
+    dd {
+      position: relative;
+
+      pointer-events: none;
+      &::after {
+        display: block;
+        opacity: .5;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        border-bottom: 1px solid #3e3e3e;
+        content: "";
+
+        pointer-events: none;
+        /* IE表示用のCSS　*/
+        @media all and (-ms-high-contrast: none) {
+          border-bottom: none;
+        }
+        /* Edge表示用のCSS */
+        @supports (-ms-ime-align: auto) {
+          border-bottom: none;
+        }
+      }
+      &:hover::after,
+      &:focus-within::after {
+        opacity: 1;
+        border-bottom: 1px solid $keyBlue;
+        box-shadow: 0 4px 3px rgba(0, 0, 0, .205);
+      }
+      input {
+        outline: none;
+
+        pointer-events: auto;
+        /* IE表示用のCSS　*/
+        @media screen and (-ms-high-contrast: active),
+        screen and (-ms-high-contrast: none) {
+          border-bottom: 1px solid $keyBlack;
+        }
+        /* Edge表示用のCSS */
+        @supports (-ms-ime-align: auto) {
+          border-bottom: 1px solid $keyBlack;
+        }
+        &:focus,
+        &:hover {
+          opacity: 1;
+
+          /* IE表示用のCSS　*/
+          @media screen and (-ms-high-contrast: active),
+          screen and (-ms-high-contrast: none) {
+            border-bottom: 1px solid $keyBlue;
+            box-shadow: 0 5px 3px -3px rgba(151, 151, 151, .253);
+          }
+          /* Edge表示用のCSS */
+          @supports (-ms-ime-align: auto) {
+            border-bottom: 1px solid $keyBlue;
+            box-shadow: 0 5px 3px -3px rgba(151, 151, 151, .253);
+          }
+        }
+      }
+    }
+  }
+  &__inquiryType {
+    dd {
+      // max-width: 505px;
+      // width: 100%;
+      .contact__selectArrow {
+        position: relative;
+        max-width: 261px;
+
+        pointer-events: none;
+        &::after {
+          display: block;
+
+// transform: translatey(-50%);
+          opacity: .5;
+          position: absolute;
+          top: 6px;
+          right: 8px;
+          transform: rotate(45deg);
+          width: 9px;
+          height: 9px;
+          border-right: 2px solid $keyBlack;
+          border-bottom: 2px solid $keyBlack;
+          content: "";
+          // /* Firefox表示用のCSS　*/
+          // @-moz-document url-prefix() {
+          //   top: 6px;
+          // }
+
+          // /* IE表示用のCSS　*/
+          // @media all and (-ms-high-contrast: none) {
+          //   top: 6px;
+          // }
+          // /* Edge表示用のCSS */
+          // @supports (-ms-ime-align: auto) {
+          //   top: 6px;
+          // }
+        }
+        &:hover::after,
+        &:focus::after {
+          opacity: 1;
+        }
+      }
+      select {
+        opacity: .5;
+
+// display: block;
+        position: relative;
+        width: 100%;
+        max-width: 261px;
+        height: 24px;
+        padding: 0 17px;
+        border: 1px solid $keyBlack;
+        line-height: 24px;
+        cursor: pointer;
+
+        appearance: none;
+
+@include mq("sp") {
+          padding: 0 7px;
+        }  pointer-events: auto;
+
+        /* IE表示用のCSS　*/
+        @media all and (-ms-high-contrast: none) {
+          padding-top: 3px;
+        }
+        /* Edge表示用のCSS */
+        @supports (-ms-ime-align: auto) {
+          padding-top: 3px;
+        }
+        /* select要素のデザインを無効にする（IE用） */
+        &::-ms-expand {
+          display: none;
+        }
+      }
+      select:hover {
+        opacity: 1;
+        box-shadow: 0 0 2px 0 $keyBlue;
+      }
+    }
+  }
+  &__labelWidth {
+    display: inline-block;
+    width: 100px;
+
+@include mq("sp") {
+      width: auto;
+      // margin-right: 10px;
+    }
+  }
+  &__required {
+    display: inline-block;
+    width: 55px;
+    height: 24px;
+    border-radius: 5px;
+    background-color: $keyRed;
+    color: $keyWhite;
+    font-size: 16rem;
+    line-height: 24px;
+    text-align: center;
+
+@include mq("sp") {
+      // width: auto;
+      margin-left: 10px;
+      font-size: 14rem;
+    }
+
+    /* IE表示用のCSS　*/
+    @media screen and (-ms-high-contrast: active),
+    screen and (-ms-high-contrast: none) {
+      margin-bottom: 7px;
+      padding-top: 2px;
+    }
+  }
+  &__requiredPosition {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__gender {
+    dd {
+      // margin-right: auto;
+      // max-width: 505px;
+      // width: 100%;
+    }
+    label {
+      cursor: pointer;
+    }
+    input {
+      display: none;
+      vertical-align: baseline;
+      cursor: pointer;
+      // opacity: 0;
+      + span::before {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border: 1px solid #b4b4b4;
+        border-radius: 50%;
+        background: #f4f4f4;
+        content: "";
+        // position: relative;
+        // top: -0.2em;
+        // margin-right: 1em;
+        // vertical-align: top;
+
+        // text-align: center;
+        // transition: all 250ms ease;
+      }
+      + span:hover::before {
+        border-color: $keyBlue;
+      }
+      + span:active::before {
+        background-color: #d1d9f5;
+      }
+      &:checked + span::before {
+        box-shadow: 0 0 0 2px $keyWhite inset;
+        background-color: $keyBlue;
+      }
+    }
+    span {
+      margin-right: 10px;
+    }
+  }
+
+  &__message {
+    margin-top: 40px;
+    dd {
+      // max-width: 780px;
+      width: 100%;
+      margin-top: 10px;
+      textarea {
+        opacity: .5;
+        width: 100%;
+        height: 213px;
+        border-color: $keyBlack;
+
+@include mq("sp") {
+          height: 160px;
+        }
+        &:hover,
+        &:focus {
+          opacity: 1;
+          border: 1px solid $keyBlue;
+          box-shadow: 0 0 2px 0 $keyBlue;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  &__checkbox {
+    margin-top: 30px;
+
+@include mq("tab") {
+      margin-top: 20px;
+    }
+
+    label {
+      position: relative;
+      cursor: pointer;
+    }
+    input {
+      display: none;
+      vertical-align: baseline;
+      cursor: pointer;
+      + span::before {
+        display: block;
+        position: absolute;
+        top: -1px;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 1px solid #ccc;
+        content: "";
+
+@include mq("tab") {
+          top: 0;
+          width: 18px;
+          height: 18px;
+        }
+      }
+      + span:hover::before {
+        border-color: $keyBlue;
+      }
+      + span:active::before {
+        background-color: #d1d9f5;
+      }
+
+      &:checked + span::after {
+        display: block;
+        position: absolute;
+        top: -1px;
+        left: 6px;
+        transform: rotate(40deg);
+        width: 9px;
+        height: 16px;
+        border-right: 2px solid $keyBlue;
+        border-bottom: 2px solid $keyBlue;
+        content: "";
+
+@include mq("tab") {
+          // top: -1px;
+          left: 5px;
+          // width: 18px;
+          // height: 18px;
+        }
+      }
+    }
+    span {
+      padding-left: 30px;
+      font-size: 18rem;
+
+@include mq("tab") {
+        font-size: 16rem;
+      }
+    }
+  }
+}
+
+.footer {
+  padding: 120px 0 119.5px 0;
+  background-color: $keyBlack;
+
+@include mq("tab") {
+    padding: 90px 0 105px 0;
+  }
+
+@include mq("sp") {
+    padding: 60px 0 90px 0;
+  }
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - 32px);
+    max-width: 1180px;
+    margin: 0 auto;
+
+@include mq("tab") {
+      flex-direction: column;
+
+// justify-content: center;
+      align-items: center;
+    }
+  }
+  &__info {
+    @include mq("tab") {
+      width: 100%;
+    }
+    ul {
+      list-style: none;
+
+@include mq("tab") {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+
+      li {
+        margin-top: 20px;
+        font-size: 18rem;
+
+@include mq("tab") {
+          margin: 20px 10px 0 10px;
+        }
+
+@include mq("sp") {
+          font-size: 14rem;
+        }
+        a {
+          color: $keyWhite;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  &__sns {
+    display: flex;
+
+@include mq("tab") {
+      justify-content: space-around;
+      max-width: 460px;
+
+// width: calc(100% - 170px);
+      margin: 0 auto;
+    }
+
+    .faIcon {
+      opacity: .6;
+      color: $keyWhite;
+      font-size: 36rem;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    a + a {
+      margin-left: 20px;
+
+@include mq("tab") {
+        margin-left: 0;
+      }
+    }
+    .faFacebookIcon {
+      padding-right: 9px;
+    }
+  }
+  &__logo {
+    @include mq("tab") {
+      margin-top: 55px;
+    }
+    p {
+      padding-right: 9px;
+      color: $keyWhite;
+      font-size: 44rem;
+
+@include mq("sp") {
+        padding-right: 0;
+        font-size: 27rem;
+      }
+    }
+    small {
+      display: block;
+      margin-top: 18px;
+      margin-left: auto;
+      color: $keyWhite;
+      font-size: 12rem;
+      text-align: right;
+
+@include mq("tab") {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.toTop {
+  width: 50px;
+  margin: 0 10px 0 auto;
+  a {
+    img {
+      position: fixed;
+      bottom: 10px;
+      z-index: 10;
+      width: 50px;
+      height: 50px;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+<%
+  var _default = config['default'];
+  for ( var key in _default ) {
+     if ( !CONFIG[key]  ) { %>
+<p><%= key %>をdefaultに合わせました。</p>
+<%      CONFIG[key] = _default[key]
+    }
+  }
+%>
+<!-- <p>サイト名　　　　　　:　<%= CONFIG['siteName'] %></p>
+<p>タイトル　　　　　　:　<%= CONFIG['title'] %></p>
+<p>ディスクリプション　:　<%= CONFIG['description'] %></p>
+<p>キーワード　　　　　:　<%= CONFIG['keyword'] %></p>
+<p>ＵＲＬ　　　　　　　:　<%= CONFIG['url'] %></p>
+<p>ＯＧＰＩＭＧ　　　　:　<%= CONFIG['ogpImg'] %></p>
+<p>ＣＳＳパス　　　　　:　<%= CONFIG['cssPath'] %></p>
+<p>▲▲▲▲ここまでが_head.ejs▲▲▲▲</p> -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <title><%if(CONFIG["title"]){%><%=CONFIG['title']%>-<%=CONFIG["siteName"]%><%}else{%><%= CONFIG["siteName"]%><%}%></title>
+  <meta name="description" content="<%= CONFIG['description'] %>" />
+    <meta name="keyword" content="<%= CONFIG['keyword'] %>" />
+    <link rel="stylesheet" href="<%= CONFIG['cssPath'] %>">
+    <!-- JS -->
+    <!-- <script src="./js/bundle.js"></script> -->
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
+    <!-- wow -->
+    <!-- <script src="./js/wow.js"></script> -->
+    <!-- swiper -->
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/bc0abd7757.js" crossorigin="anonymous"></script>
+</head>

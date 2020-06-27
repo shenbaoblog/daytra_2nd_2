@@ -1,0 +1,23 @@
+{
+  "default": {
+    "siteName": "デフォルトSiteName",
+    "url": "デフォルトUrl",
+    "ogpImg": "デフォルトOgp",
+    "cssPath": "./css/style.css"
+  },
+  "index": {
+    "title": "",
+    "description": "インデックスDescription",
+    "keyword": "インデックスkeyword"
+  },
+  "home": {
+    "title": "ホームTitle",
+    "description": "ホームDescription",
+    "keyword": "ホームkeyword"
+  },
+  "page": {
+    "title": "ページTitle",
+    "description": "ページDescription",
+    "keyword": "ページkeyword"
+  }
+}
